@@ -2,12 +2,12 @@
 // pub mod leetcode_75_2;
 // pub mod leetcode_75_605;
 // use leetcode_75_605::Solution;
-pub mod leetcode_75_345;
+pub mod leetcode_75_1456;
 
 pub struct Solution {}
 
 fn main() {
-    let s = "a.";
-    let result = Solution::reverse_vowels(s.to_string());
-    println!("{}", result);
+    let v = "leetcode";
+    let r = Solution::max_vowels(v.to_string(), 3);
+    println!("{}", r);
 }
