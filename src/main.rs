@@ -2,12 +2,12 @@
 // pub mod leetcode_75_2;
 // pub mod leetcode_75_605;
 // use leetcode_75_605::Solution;
-pub mod leetcode_75_1456;
+pub mod leetcode_75_724;
 
 pub struct Solution {}
 
 fn main() {
-    let v = "leetcode";
-    let r = Solution::max_vowels(v.to_string(), 3);
+    let nums = [1, 2, 3];
+    let r = Solution::pivot_index(nums.to_vec());
     println!("{}", r);
 }
