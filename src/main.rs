@@ -1,19 +1,17 @@
+use leetcode_75_346::MovingAverage;
+
 // pub mod leetcode_75_1431;
 // pub mod leetcode_75_2;
 // pub mod leetcode_75_605;
 // use leetcode_75_605::Solution;
-pub mod leetcode_75_1268;
+pub mod leetcode_75_346;
 
 pub struct Solution {}
 
 fn main() {
-    let products = vec![
-        "mobile".to_string(),
-        "mouse".to_string(),
-        "moneypot".to_string(),
-        "monitor".to_string(),
-        "mousepad".to_string(),
-    ];
-    let result = Solution::suggested_products(products, "mouse".to_string());
+    let mut ma = MovingAverage::new(3);
+    let result = ma.next(1);
+    let result = ma.next(10);
+    let result = ma.next(30);
     println!("{:?}", result);
 }
