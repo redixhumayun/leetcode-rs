@@ -1,14 +1,8 @@
-pub mod leetcode_75_332;
+pub mod leetcode_75_1059;
 
 pub struct Solution {}
 
 fn main() {
-    let result = Solution::find_itinerary(vec![
-        vec!["JFK".to_string(), "SFO".to_string()],
-        vec!["JFK".to_string(), "ATL".to_string()],
-        vec!["SFO".to_string(), "ATL".to_string()],
-        vec!["ATL".to_string(), "JFK".to_string()],
-        vec!["ATL".to_string(), "SFO".to_string()],
-    ]);
+    let result = Solution::leads_to_destination(2, vec![vec![0, 1]], 0, 1);
     println!("Result {:?}", result);
 }
