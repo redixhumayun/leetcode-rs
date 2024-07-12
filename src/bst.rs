@@ -97,6 +97,8 @@ impl Tree {
         return Err(BSTError::NodeNotFound);
     }
 
+    /// If the node has a right child, then it is the smallest node in the right subtree
+    /// Otherwise, find the closest parent in whose left subtree this node lives
     fn in_order_successor(&self, data: i32) -> Result<i32, BSTError> {
         let node = self.find(data).ok_or_else(|| BSTError::NodeNotFound)?;
 
@@ -121,6 +123,8 @@ impl Tree {
         }
     }
 
+    /// If the node has a left child, then it is the largest node in the left subtree
+    /// Otherwise, find the closest parent in whose right subtree this node lives
     fn in_order_predecessor(&self, data: i32) -> Result<i32, BSTError> {
         let node = self.find(data).ok_or_else(|| BSTError::NodeNotFound)?;
         match node.left {
