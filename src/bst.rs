@@ -169,6 +169,25 @@ impl Tree {
         Ok(())
     }
 
+    fn in_order_traversal(&self) -> Vec<i32> {
+        let mut output = Vec::new();
+        let mut stack = Vec::new();
+        let mut current = &self.root;
+
+        while current.is_some() || !stack.is_empty() {
+            while let Some(node) = current {
+                stack.push(node);
+                current = &node.left;
+            }
+
+            if let Some(node) = stack.pop() {
+                output.push(node.data);
+                current = &node.right;
+            }
+        }
+        output
+    }
+
     fn delete_node(node: NodeLink, val: i32) -> NodeLink {
         match node {
             Some(mut node) => {
@@ -225,9 +244,11 @@ mod tests {
         assert_eq!(tree.in_order_predecessor(5).unwrap(), 4);
         assert_eq!(tree.in_order_predecessor(4).unwrap(), 3);
         assert_eq!(tree.in_order_predecessor(7).unwrap(), 6);
+        println!("before deleting {:?}", tree.in_order_traversal());
 
         tree.delete(3).unwrap();
         assert_eq!(tree.find(3), None);
         assert_eq!(tree.in_order_successor(2).unwrap(), 4);
+        println!("after deleting {:?}", tree.in_order_traversal());
     }
 }
