@@ -1,5 +1,5 @@
 // pub mod leetcode_75_1971;
-pub mod bst;
+pub mod arena_bst;
 
 pub struct Solution {}
 
