@@ -1,7 +1,8 @@
+// use crate::Solution;
+
 pub struct KthLargest {
     k: i32,
     nums: Vec<i32>,
-    top: i32,
 }
 
 /**
@@ -12,25 +13,14 @@ impl KthLargest {
     pub fn new(k: i32, nums: Vec<i32>) -> Self {
         let mut nums = nums;
         nums.sort();
-        let start_index = nums.len() - (k as usize - 1);
-        let extracted = &nums[start_index..];
-        let top = nums[nums.len() - k as usize];
-        KthLargest {
-            k,
-            nums: extracted.to_vec(),
-            top,
-        }
+        KthLargest { k, nums }
     }
 
     pub fn add(&mut self, val: i32) -> i32 {
-        if val >= self.nums[0] {
-            let index = self.binary_search(val);
-            self.nums.insert(index, val);
-            let removed = self.nums.remove(0);
-            self.top = removed;
-            return self.top;
-        }
-        self.top
+        let insertion_index = self.binary_search(val);
+        self.nums.insert(insertion_index, val);
+        let top_index = self.nums.len() - self.k as usize;
+        self.nums[top_index]
     }
 
     fn binary_search(&self, val: i32) -> usize {
