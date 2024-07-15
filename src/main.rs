@@ -1,9 +1,8 @@
-pub mod leetcode_75_1136;
+pub mod leetcode_75_253;
 
 pub struct Solution {}
 
 fn main() {
-    // let mut output = Vec::new();
-    // let result = Solution::contains_nearby_duplicate(vec![1, 2, 3, 1, 2, 3], 2);
-    // println!("Result {:?}", result);
+    let result = Solution::min_meeting_rooms(vec![vec![5, 8], vec![6, 8]]);
+    println!("result {:?}", result);
 }
