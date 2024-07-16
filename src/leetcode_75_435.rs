@@ -3,7 +3,7 @@ use crate::Solution;
 impl Solution {
     pub fn erase_overlap_intervals(intervals: Vec<Vec<i32>>) -> i32 {
         let mut intervals = intervals;
-        intervals.sort_by_key(|x| x[1]);
+        intervals.sort_by_key(|x| x[1]); //  sort by end time to remove the larger intervals which will *minimize* the number of intervals removed
         let mut start = intervals[0][0];
         let mut end = intervals[0][1];
 
