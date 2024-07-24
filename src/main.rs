@@ -1,38 +1,47 @@
-pub mod leetcode_75_543;
-
-use std::{cell::RefCell, rc::Rc};
-
-use leetcode_75_543::TreeNode;
+pub mod doubly_linked_list;
+use doubly_linked_list::DoublyLinkedList;
 
 pub struct Solution {}
 
 fn main() {
-    let root = Some(Rc::new(RefCell::new(TreeNode {
-        val: 1,
-        left: None,
-        right: None,
-    })));
-    let left_root = Some(Rc::new(RefCell::new(TreeNode {
-        val: 2,
-        left: None,
-        right: None,
-    })));
-    left_root.as_ref().unwrap().borrow_mut().left = Some(Rc::new(RefCell::new(TreeNode {
-        val: 4,
-        left: None,
-        right: None,
-    })));
-    left_root.as_ref().unwrap().borrow_mut().right = Some(Rc::new(RefCell::new(TreeNode {
-        val: 5,
-        left: None,
-        right: None,
-    })));
-    root.as_ref().unwrap().borrow_mut().left = left_root;
-    root.as_ref().unwrap().borrow_mut().right = Some(Rc::new(RefCell::new(TreeNode {
-        val: 3,
-        left: None,
-        right: None,
-    })));
-    let result = Solution::diameter_of_binary_tree(root);
-    println!("result {}", result);
+    let mut dll = DoublyLinkedList::new();
+    dll.append(1).unwrap();
+    dll.append(2).unwrap();
+    dll.append(3).unwrap();
+    dll.append(4).unwrap();
+    dll.append(5).unwrap();
+
+    for value in dll.iter() {
+        print!("{} -> ", value);
+    }
+    print!("None");
+    println!();
+
+    let node = dll.find(3).unwrap();
+    println!("node {:?}", node);
+
+    dll.move_to_end(node).unwrap();
+    for value in dll.iter() {
+        print!("{} -> ", value);
+    }
+    print!("None");
+
+    // let mut list = LinkedList::new();
+    // list.append(1);
+    // list.append(2);
+    // list.append(3);
+    // list.append(4);
+    // list.append(5);
+
+    // // Print the LinkedList
+    // for value in list.iter() {
+    //     print!("{} -> ", value);
+    // }
+    // println!("None");
+
+    // list.remove_middle();
+    // for value in list.iter() {
+    //     print!("{} -> ", value);
+    // }
+    // println!("None");
 }
